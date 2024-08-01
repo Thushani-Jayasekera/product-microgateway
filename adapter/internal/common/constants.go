@@ -24,7 +24,7 @@ const (
 	// OrganizationID query parameter key.
 	organizationID string = "organizationId"
 	// OrganizationID query parameter value used when the global adapter is enabled and it is a shared gateway.
-	commonOrganizationIDValue string = "ALL"
+	commonOrganizationIDValue string = "d3a7dfea-fb10-4371-b21d-85d1bc28667b"
 	// DataPlaneId query parameter key.
 	dataPlaneID string = "dataPlaneId"
 	// gatewayAccessibilityType query parameter key
@@ -37,12 +37,7 @@ func PopulateQueryParamForOrganizationID(queryParamMap map[string]string) map[st
 	if queryParamMap == nil {
 		queryParamMap = make(map[string]string)
 	}
-	conf, _ := config.ReadConfigs()
-	if conf.GlobalAdapter.Enabled {
-		queryParamMap[organizationID] = commonOrganizationIDValue
-	} else if conf.ControlPlane.OrganizationID != "" {
-		queryParamMap[organizationID] = conf.ControlPlane.OrganizationID
-	}
+	queryParamMap[organizationID] = "d3a7dfea-fb10-4371-b21d-85d1bc28667b"
 	return queryParamMap
 }
 
